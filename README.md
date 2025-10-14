@@ -39,14 +39,14 @@ erDiagram
         varchar surname
         varchar email
         varchar password
-        date birth_date
+        datetime birth_date
         datetime registration_date
     }
     Subscription {
         int subscription_id PK
         int user_id FK
-        date start_date
-        date end_date
+        datetime start_date
+        datetime end_date
         varchar type
         varchar status
     }
@@ -60,7 +60,7 @@ erDiagram
         varchar status
     }
     Loan {
-        date loan_date PK
+        datetime loan_date PK
         int user_id PK, FK
         int book_id PK, FK
         varchar status
@@ -72,20 +72,20 @@ erDiagram
         int publisher_id FK
         varchar name
         varchar isbn
-        date publication_date
+        datetime publication_date
         int pages_count
     }
     Publisher {
         int publisher_id PK
         varchar name
         varchar country
-        date founded_date
+        datetime founded_date
     }
     Author {
         int author_id PK
         varchar name
         varchar surname
-        date birth_date
+        datetime birth_date
         varchar country
     }
     Genre {
