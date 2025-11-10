@@ -1,11 +1,3 @@
-# 📘 Лабораторна робота №3
-**Тема:** Маніпулювання даними SQL  
-**Проєкт:** Онлайн-бібліотека (Online Library System)
-
-## 🧱 SQL-запити
-
-#### SELECT
-```sql
 SELECT user_id, name, email
 FROM "User"
 LIMIT 3;
@@ -61,10 +53,8 @@ SELECT u.name, s.type, s.status
 FROM Subscription s
 JOIN "User" u ON u.user_id = s.user_id
 WHERE s.status = 'ACTIVE';
-```
 
-#### INSERT
-```sql
+
 INSERT INTO "User" (name, surname, email, password_hash, birth_date)
 VALUES ('Taras', 'Bondarenko', 'taras.bond@example.com', '$2a$12$xxxx', '1999-03-29');
 
@@ -94,4 +84,3 @@ VALUES (2, 1);
 
 INSERT INTO BookGenre (book_id, genre_id)
 VALUES (3, 1);
-```
