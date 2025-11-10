@@ -95,3 +95,75 @@ VALUES (2, 1);
 INSERT INTO BookGenre (book_id, genre_id)
 VALUES (3, 1);
 ```
+
+#### UPDATE
+```sql
+UPDATE "User"
+SET 
+    surname = 'Kovalenko-Melnyk',
+    birth_date = '2000-12-11'
+WHERE email = 'anna.kovalenko@example.com';
+
+UPDATE Subscription
+SET 
+    status = 'CANCELLED'
+WHERE subscription_id = 3 AND type = 'TRIAL';
+
+UPDATE Publisher
+SET 
+    country = 'USA, California',
+    founded_date = '1988-02-01'
+WHERE name = 'O’Reilly Media';
+
+UPDATE Book
+SET 
+    pages_count = 328
+WHERE isbn = '9780596520830';
+
+UPDATE Author
+SET 
+    country = 'USA, Illinois'
+WHERE name = 'David' AND surname = 'Beazley';
+
+UPDATE Genre
+SET 
+    description = 'Books about software development.'
+WHERE name = 'Programming';
+
+UPDATE Payment
+SET 
+    status = 'FAILED'
+WHERE payment_id = 3 AND status = 'PENDING';
+
+UPDATE Loan
+SET 
+    status = 'RETURNED'
+WHERE user_id = 1 AND book_id = 1 AND status = 'ACTIVE';
+```
+
+#### DELETE
+```sql
+DELETE FROM "User"
+WHERE email = 'dmytro.shevchenko@example.com';
+
+DELETE FROM Subscription
+WHERE subscription_id = 2 AND status = 'EXPIRED';
+
+DELETE FROM Publisher
+WHERE name = 'KyivBook';
+
+DELETE FROM Book
+WHERE isbn = '9786171234567';
+
+DELETE FROM Author
+WHERE name = 'Oleh' AND surname = 'Hnatiuk';
+
+DELETE FROM Genre
+WHERE name = 'History';
+
+DELETE FROM Payment
+WHERE payment_id = 2;
+
+DELETE FROM Loan
+WHERE user_id = 1 AND book_id = 1 AND status = 'RETURNED';
+```
