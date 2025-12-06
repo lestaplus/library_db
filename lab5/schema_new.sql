@@ -57,7 +57,6 @@ CREATE TABLE IF NOT EXISTS Country (
 CREATE TABLE IF NOT EXISTS Publisher (
     publisher_id SERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
-    country VARCHAR(100),
     founded_date DATE,
     country_id INT REFERENCES Country(country_id) ON DELETE SET NULL
 );
