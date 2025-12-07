@@ -47,16 +47,11 @@ CREATE TABLE IF NOT EXISTS Subscription (
     status subscription_status NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Country (
-    country_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS Publisher (
     publisher_id SERIAL PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
-    founded_date DATE,
-    country_id INT REFERENCES Country(country_id) ON DELETE SET NULL
+    country VARCHAR(100),
+    founded_date DATE
 );
 
 CREATE TABLE IF NOT EXISTS Book (
@@ -73,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Author (
     name VARCHAR(100) NOT NULL,
     surname VARCHAR(100) NOT NULL,
     birth_date DATE,
-    country_id INT REFERENCES Country(country_id) ON DELETE SET NULL
+    country VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS Genre (
@@ -84,6 +79,7 @@ CREATE TABLE IF NOT EXISTS Genre (
 
 CREATE TABLE IF NOT EXISTS Payment (
     payment_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES "User"(user_id) ON DELETE CASCADE,
     subscription_id INT NOT NULL REFERENCES Subscription(subscription_id) ON DELETE CASCADE,
     amount NUMERIC(8,2) CHECK (amount > 0),
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

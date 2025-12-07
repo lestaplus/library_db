@@ -8,34 +8,30 @@ INSERT INTO Subscription (user_id, start_date, end_date, type, status) VALUES
 (2, '2025-03-01', '2025-09-01', 'STANDARD', 'EXPIRED'),
 (3, '2025-10-15', '2025-11-15', 'TRIAL', 'ACTIVE');
 
-INSERT INTO Country (name) VALUES
-('USA'),
-('Ukraine');
-
-INSERT INTO Publisher (name, founded_date, country_id) VALUES
-('Pearson Education', '1990-04-15', 1),
-('KyivBook', '2005-06-12', 2),
-('O’Reilly Media', '1980-01-01', 1);
+INSERT INTO Publisher (name, country, founded_date) VALUES
+('Pearson Education', 'USA', '1990-04-15'),
+('KyivBook', 'Ukraine', '2005-06-12'),
+('O’Reilly Media', 'USA', '1980-01-01');
 
 INSERT INTO Book (publisher_id, name, isbn, publication_date, pages_count) VALUES
 (1, 'Learning SQL', '9780596520830', '2021-01-10', 320),
 (2, 'Ukrainian History', '9786171234567', '2018-05-20', 540),
 (3, 'Advanced Python', '9781492051367', '2020-11-01', 450);
 
-INSERT INTO Author (name, surname, birth_date, country_id) VALUES
-('Mark', 'Lutz', '1956-03-05', 1),
-('Oleh', 'Hnatiuk', '1985-07-22', 2),
-('David', 'Beazley', '1963-01-01', 1);
+INSERT INTO Author (name, surname, birth_date, country) VALUES
+('Mark', 'Lutz', '1956-03-05', 'USA'),
+('Oleh', 'Hnatiuk', '1985-07-22', 'Ukraine'),
+('David', 'Beazley', '1963-01-01', 'USA');
 
 INSERT INTO Genre (name, description) VALUES
 ('Education', 'Books that provide learning materials and tutorials'),
 ('History', 'Books about historical events and people'),
 ('Programming', 'Books related to software development and coding');
 
-INSERT INTO Payment (subscription_id, amount, payment_type, status) VALUES
-(1, 199.99, 'CARD', 'COMPLETED'),
-(2, 99.50, 'PAYPAL', 'COMPLETED'),
-(3, 50.00, 'CARD', 'PENDING');
+INSERT INTO Payment (user_id, subscription_id, amount, payment_type, status) VALUES
+(1, 1, 199.99, 'CARD', 'COMPLETED'),
+(2, 2, 99.50, 'PAYPAL', 'COMPLETED'),
+(3, 3, 50.00, 'CARD', 'PENDING');
 
 INSERT INTO Loan (user_id, book_id, status, access_end_date, subscription_id) VALUES
 (1, 1, 'ACTIVE', '2025-12-31', 1),
