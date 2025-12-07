@@ -102,3 +102,23 @@ model book {
 -- AlterTable
 ALTER TABLE "book" DROP COLUMN "pages_count";
 ```
+
+## 4. Результати коректності схеми та запитів в Prisma Studio
+
+## 1. Перевірка таблиці `Review`
+
+Було створено новий запис у таблиці `Review`.
+
+![1](results/review.png)
+
+## 2. Перевірка зміни таблиці `User`
+
+Було перевірено наявність нового стовпця `is_verified` в таблиці `User`. 
+
+![2](results/user.png)
+
+## 3. Перевірка зміни таблиці `Book`
+
+Перевірено відсутність стовпця `pages_count` в таблиці `Book`. 
+
+![3](results/review.png)
