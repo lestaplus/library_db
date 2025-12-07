@@ -17,6 +17,8 @@ model User {
   registration_date DateTime?      @default(now()) @db.Timestamp(6)
   loan              loan[]
   subscription      subscription[]
+  reviews           Review[]
+  is_verified       Boolean @default(false)
 }
 
 model author {
@@ -36,11 +38,12 @@ model book {
   name             String       @db.VarChar(200)
   isbn             String       @unique @db.VarChar(20)
   publication_date DateTime?    @db.Date
-  pages_count      Int?
+  // видалено поле pages_count
   publisher        publisher?   @relation(fields: [publisher_id], references: [publisher_id], onUpdate: NoAction)
   bookauthor       bookauthor[]
   bookgenre        bookgenre[]
   loan             loan[]
+  reviews          Review[]
 }
 
 model bookauthor {
@@ -119,6 +122,17 @@ model subscription {
   loan            loan[]
   payment         payment[]
   User            User                @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+  userId    Int      @map("user_id")
+  bookId    Int      @map("book_id")
+  user      User     @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+  book      book     @relation(fields: [bookId], references: [book_id], onDelete: Cascade)
 }
 
 enum loan_status {
